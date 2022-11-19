@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recycler;
     private LivrosAdapter adapter;
-    private ArrayList<LivroPadrao> listaLivros;
+    public static ArrayList<LivroPadrao> listaLivros = new ArrayList<>();
     Button botao;
 
     @Override
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recycler = findViewById(R.id.recyclerView);
-        listaLivros = new ArrayList<>();
+
         listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00"));
         listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
         listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
@@ -34,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
         listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00"));
         listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
         listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
+
         adapter = new LivrosAdapter(MainActivity.this, listaLivros);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
-                MainActivity.this, LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
+
         recycler.setLayoutManager(layoutManager);
         recycler.setItemAnimator(new DefaultItemAnimator());
         recycler.setAdapter(adapter);

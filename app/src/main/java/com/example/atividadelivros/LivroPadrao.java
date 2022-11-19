@@ -15,6 +15,15 @@ public class LivroPadrao {
         return nomeLivro;
     }
 
+    @Override
+    public String toString() {
+        return "LivroPadrao{" +
+                "nomeLivro='" + nomeLivro + '\'' +
+                ", sinopseLivro='" + sinopseLivro + '\'' +
+                ", precoLivro='" + precoLivro + '\'' +
+                '}';
+    }
+
     public void setNomeLivro(String nomeLivro) {
         this.nomeLivro = nomeLivro;
     }
