@@ -4,15 +4,13 @@ public class LivroPadrao {
     private String nomeLivro;
     private String sinopseLivro;
     private String precoLivro;
+    private int imagem;
 
-    public LivroPadrao(String nomeLivro, String sinopseLivro, String precoLivro) {
+    public LivroPadrao(String nomeLivro, String sinopseLivro, String precoLivro, int imagem) {
         this.nomeLivro = nomeLivro;
         this.sinopseLivro = sinopseLivro;
         this.precoLivro = precoLivro;
-    }
-
-    public String getNomeLivro() {
-        return nomeLivro;
+        this.imagem = imagem;
     }
 
     @Override
@@ -21,7 +19,12 @@ public class LivroPadrao {
                 "nomeLivro='" + nomeLivro + '\'' +
                 ", sinopseLivro='" + sinopseLivro + '\'' +
                 ", precoLivro='" + precoLivro + '\'' +
+                ", imagem=" + imagem +
                 '}';
+    }
+
+    public String getNomeLivro() {
+        return nomeLivro;
     }
 
     public void setNomeLivro(String nomeLivro) {
@@ -42,5 +45,13 @@ public class LivroPadrao {
 
     public void setPrecoLivro(String precoLivro) {
         this.precoLivro = precoLivro;
+    }
+
+    public int getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(int imagem) {
+        this.imagem = imagem;
     }
 }

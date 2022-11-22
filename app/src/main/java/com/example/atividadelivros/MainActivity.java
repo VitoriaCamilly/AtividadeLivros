@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recycler;
     private LivrosAdapter adapter;
     public static ArrayList<LivroPadrao> listaLivros = new ArrayList<>();
+    private int [] imagens = {R.drawable.arcoiris, R.drawable.maca, R.drawable.shopping};
     Button botao;
 
     @Override
@@ -25,17 +26,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recycler = findViewById(R.id.recyclerView);
 
-        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00"));
-        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
-        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
-        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00"));
-        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
-        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
-        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00"));
-        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
-        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
+        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00", R.drawable.arcoiris));
+        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00", R.drawable.shopping));
+        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00", R.drawable.maca));
+        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00", R.drawable.maca));
+//        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
+//        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
+//        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00"));
+//        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
+//        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
 
-        adapter = new LivrosAdapter(MainActivity.this, listaLivros);
+        adapter = new LivrosAdapter(MainActivity.this, listaLivros, imagens);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
 
         recycler.setLayoutManager(layoutManager);

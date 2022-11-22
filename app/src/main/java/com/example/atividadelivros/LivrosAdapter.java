@@ -14,10 +14,12 @@ import java.util.ArrayList;
 public class LivrosAdapter extends RecyclerView.Adapter<LivrosViewHolder> {
     private Context context;
     private ArrayList<LivroPadrao> listaLivros;
+    private int[] imagens;
 
-    public LivrosAdapter(Context context, ArrayList<LivroPadrao> listaLivros) {
+    public LivrosAdapter(Context context, ArrayList<LivroPadrao> listaLivros, int[] imagens) {
         this.context = context;
         this.listaLivros = listaLivros;
+        this.imagens = imagens;
     }
 
     @NonNull
@@ -34,7 +36,7 @@ public class LivrosAdapter extends RecyclerView.Adapter<LivrosViewHolder> {
         livrosViewHolder.nomeLivro.setText(livroPadrao.getNomeLivro());
         livrosViewHolder.sinopseLivro.setText(livroPadrao.getSinopseLivro());
         livrosViewHolder.precoLivro.setText(livroPadrao.getPrecoLivro());
-
+        livrosViewHolder.fotoLivro.setImageResource(livroPadrao.getImagem());
         livrosViewHolder.quadrado.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetalhesLivro.class);
             intent.putExtra("livro", position);
