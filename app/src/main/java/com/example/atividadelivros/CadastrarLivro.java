@@ -37,11 +37,9 @@ public class CadastrarLivro extends AppCompatActivity {
         recycler = findViewById(R.id.recyclerView);
         adicionarLista = findViewById(R.id.adicionarLista);
         addImage = findViewById(R.id.addImagem);
-        addImage.setOnClickListener(
-                v -> {
-                    pickImage();
-                }
-        );
+        addImage.setOnClickListener(v -> {
+            pickImage();
+        });
 
         adicionarLista.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,21 +51,14 @@ public class CadastrarLivro extends AppCompatActivity {
                 System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + livroPadrao);
                 MainActivity.listaLivros.add(livroPadrao);
                 System.out.println("Livro Cadastrado");
-
-//                setResult(200, new Intent());
                 finish();
             }
         });
 
-
-
         voltar = findViewById(R.id.voltar2);
-
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(i);
                 finish();
             }
         });

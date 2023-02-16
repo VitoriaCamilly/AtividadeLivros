@@ -37,30 +37,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recycler = findViewById(R.id.recyclerView);
 
-//        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00", R.drawable.arcoiris));
-//        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00", R.drawable.shopping));
-//        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00", R.drawable.maca));
-//        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00", R.drawable.maca));
-//        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
-//        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
-//        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00"));
-//        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
-//        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
-
         adapter = new LivrosAdapter(MainActivity.this, listaLivros, imagens);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
-
-
-
-        System.out.println("Listaaaaaaa" + listaLivros);
-
 
         recycler.setLayoutManager(layoutManager);
         recycler.setItemAnimator(new DefaultItemAnimator());
         recycler.setAdapter(adapter);
 
         botao = findViewById(R.id.botao);
-
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
