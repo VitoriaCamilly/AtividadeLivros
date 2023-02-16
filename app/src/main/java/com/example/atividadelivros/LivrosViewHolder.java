@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class LivrosViewHolder extends RecyclerView.ViewHolder {
     TextView nomeLivro, sinopseLivro, precoLivro;
-    ImageView fotoLivro;
+    ImageView imageView;
     ConstraintLayout quadrado;
 
     public LivrosViewHolder(@NonNull View itemView) {
@@ -18,7 +18,7 @@ public class LivrosViewHolder extends RecyclerView.ViewHolder {
         nomeLivro = itemView.findViewById(R.id.nomeLivro2);
         sinopseLivro = itemView.findViewById(R.id.sinopseLivro2);
         precoLivro = itemView.findViewById(R.id.precoLivro2);
-        fotoLivro = itemView.findViewById(R.id.fotoLivro);
+        imageView = itemView.findViewById(R.id.fotoLivro);
         quadrado = itemView.findViewById(R.id.quadrado);
     }
 }

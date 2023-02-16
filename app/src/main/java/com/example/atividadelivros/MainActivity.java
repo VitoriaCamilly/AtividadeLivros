@@ -1,5 +1,6 @@
 package com.example.atividadelivros;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,15 +22,25 @@ public class MainActivity extends AppCompatActivity {
     Button botao;
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1){
+            this.adapter.notifyDataSetChanged();
+        }
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recycler = findViewById(R.id.recyclerView);
 
-        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00", R.drawable.arcoiris));
-        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00", R.drawable.shopping));
-        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00", R.drawable.maca));
-        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00", R.drawable.maca));
+//        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00", R.drawable.arcoiris));
+//        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00", R.drawable.shopping));
+//        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00", R.drawable.maca));
+//        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00", R.drawable.maca));
 //        listaLivros.add(new LivroPadrao("Diario de um banana 2", "Um banana", "R$20,00"));
 //        listaLivros.add(new LivroPadrao("Diario de um banana 3", "Um banana", "R$20,00"));
 //        listaLivros.add(new LivroPadrao("Diario de um banana", "Um banana", "R$20,00"));
@@ -38,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new LivrosAdapter(MainActivity.this, listaLivros, imagens);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
+
+
+
+        System.out.println("Listaaaaaaa" + listaLivros);
+
 
         recycler.setLayoutManager(layoutManager);
         recycler.setItemAnimator(new DefaultItemAnimator());
@@ -49,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), CadastrarLivro.class);
-                startActivity(i);
+                startActivityForResult(i, 1);
             }
         });
     }

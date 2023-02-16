@@ -1,10 +1,12 @@
 package com.example.atividadelivros;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,6 +19,7 @@ public class DetalhesLivro extends AppCompatActivity {
     TextView precoLivro;
     LivroPadrao livroPadrao;
     int pos = 0;
+    private Uri selecionaURI;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,5 +54,7 @@ public class DetalhesLivro extends AppCompatActivity {
         precoLivro = findViewById(R.id.precoLivro2);
         precoLivro.setText(livro.getPrecoLivro());
     }
+
+
 
 }

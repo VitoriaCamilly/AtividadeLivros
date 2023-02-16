@@ -1,11 +1,15 @@
 package com.example.atividadelivros;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,9 +23,11 @@ public class CadastrarLivro extends AppCompatActivity {
     private EditText inputNome;
     private EditText inputSinopse;
     private EditText inputPreco;
-    private int fotoLivro;
+    Button addImage;
 
     private RecyclerView recycler;
+    public static final int PICK_IMAGE = 1;
+    Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,12 @@ public class CadastrarLivro extends AppCompatActivity {
 
         recycler = findViewById(R.id.recyclerView);
         adicionarLista = findViewById(R.id.adicionarLista);
+        addImage = findViewById(R.id.addImagem);
+        addImage.setOnClickListener(
+                v -> {
+                    pickImage();
+                }
+        );
 
         adicionarLista.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,10 +49,13 @@ public class CadastrarLivro extends AppCompatActivity {
                 inputNome = findViewById(R.id.inputNome);
                 inputSinopse = findViewById(R.id.inputSinopse);
                 inputPreco = findViewById(R.id.inputPreco);
-
-                LivroPadrao livroPadrao = new LivroPadrao(inputNome.getText().toString(), inputSinopse.getText().toString(), inputPreco.getText().toString(), 2131165343);
+                LivroPadrao livroPadrao = new LivroPadrao(inputNome.getText().toString(), inputSinopse.getText().toString(), inputPreco.getText().toString(), uri);
+                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + livroPadrao);
                 MainActivity.listaLivros.add(livroPadrao);
                 System.out.println("Livro Cadastrado");
+
+//                setResult(200, new Intent());
+                finish();
             }
         });
 
@@ -51,9 +66,28 @@ public class CadastrarLivro extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(i);
+                finish();
             }
         });
+    }
+
+    public void pickImage() {
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, 3);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && data != null) {
+            Uri selectedImagem = data.getData();
+            uri =selectedImagem;
+            ImageView imageView = findViewById(R.id.imageView);
+            imageView.setImageURI(selectedImagem);
+        }else{
+            System.out.println("oi");
+        }
     }
 }

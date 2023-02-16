@@ -1,12 +1,14 @@
 package com.example.atividadelivros;
 
+import android.net.Uri;
+
 public class LivroPadrao {
     private String nomeLivro;
     private String sinopseLivro;
     private String precoLivro;
-    private int imagem;
+    private Uri imagem;
 
-    public LivroPadrao(String nomeLivro, String sinopseLivro, String precoLivro, int imagem) {
+    public LivroPadrao(String nomeLivro, String sinopseLivro, String precoLivro, Uri imagem) {
         this.nomeLivro = nomeLivro;
         this.sinopseLivro = sinopseLivro;
         this.precoLivro = precoLivro;
@@ -47,11 +49,11 @@ public class LivroPadrao {
         this.precoLivro = precoLivro;
     }
 
-    public int getImagem() {
+    public Uri getImagem() {
         return imagem;
     }
 
-    public void setImagem(int imagem) {
+    public void setImagem(Uri imagem) {
         this.imagem = imagem;
     }
 }
