@@ -25,7 +25,6 @@ public class CadastrarLivro extends AppCompatActivity {
     private EditText inputPreco;
     Button addImage;
 
-    private RecyclerView recycler;
     public static final int PICK_IMAGE = 1;
     Uri uri;
 
@@ -34,24 +33,26 @@ public class CadastrarLivro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastrarlivro);
 
-        recycler = findViewById(R.id.recyclerView);
-        adicionarLista = findViewById(R.id.adicionarLista);
+
         addImage = findViewById(R.id.addImagem);
         addImage.setOnClickListener(v -> {
             pickImage();
         });
 
+        adicionarLista = findViewById(R.id.adicionarLista);
         adicionarLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputNome = findViewById(R.id.inputNome);
                 inputSinopse = findViewById(R.id.inputSinopse);
                 inputPreco = findViewById(R.id.inputPreco);
+
                 LivroPadrao livroPadrao = new LivroPadrao(inputNome.getText().toString(), inputSinopse.getText().toString(), inputPreco.getText().toString(), uri);
-                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + livroPadrao);
+
                 MainActivity.listaLivros.add(livroPadrao);
-                System.out.println("Livro Cadastrado");
-                finish();
+
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
             }
         });
 
@@ -59,7 +60,8 @@ public class CadastrarLivro extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
             }
         });
     }
@@ -78,7 +80,7 @@ public class CadastrarLivro extends AppCompatActivity {
             ImageView imageView = findViewById(R.id.imageView);
             imageView.setImageURI(selectedImagem);
         }else{
-            System.out.println("oi");
+            System.out.println("Deu errado!");
         }
     }
 }

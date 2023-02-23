@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,10 +17,8 @@ public class DetalhesLivro extends AppCompatActivity {
     TextView nomeLivro;
     TextView sinopseLivro;
     TextView precoLivro;
-    LivroPadrao livroPadrao;
+    ImageView imagem;
     int pos = 0;
-    private Uri selecionaURI;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +41,7 @@ public class DetalhesLivro extends AppCompatActivity {
     }
 
     private void updateLabel() {
-        LivroPadrao  livro = MainActivity.listaLivros.get(this.pos);
+        LivroPadrao livro = MainActivity.listaLivros.get(this.pos);
 
         nomeLivro = findViewById(R.id.nomeLivro2);
         nomeLivro.setText(livro.getNomeLivro());
@@ -53,6 +51,9 @@ public class DetalhesLivro extends AppCompatActivity {
 
         precoLivro = findViewById(R.id.precoLivro2);
         precoLivro.setText(livro.getPrecoLivro());
+
+        imagem = findViewById(R.id.imagem);
+        imagem.setImageURI(livro.getImagem());
     }
 
 
