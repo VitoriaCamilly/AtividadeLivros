@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recycler;
-    private LivrosAdapter adapter;
+    public static LivrosAdapter adapter;
     public static ArrayList<LivroPadrao> listaLivros = new ArrayList<>();
     private int [] imagens = {R.drawable.arcoiris, R.drawable.maca, R.drawable.shopping};
     Button botao;

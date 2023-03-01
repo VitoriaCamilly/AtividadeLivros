@@ -43,6 +43,10 @@ public class LivrosAdapter extends RecyclerView.Adapter<LivrosViewHolder> {
             intent.putExtra("livro", position);
             context.startActivity(intent);
         });
+        livrosViewHolder.excluir.setOnClickListener(v -> {
+            MainActivity.listaLivros.remove(position);
+            MainActivity.adapter.notifyItemRemoved(position);
+        });
     }
 
     @Override
